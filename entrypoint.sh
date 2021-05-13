@@ -14,7 +14,7 @@ if [ "$ENVS" ]
 then
     ENV_FLAG="--set-env-vars $ENVS"
 else
-    ENV_FLAG="--clear-env-vars"
+    ENV_FLAG=""
 fi
 
 
@@ -32,7 +32,6 @@ gcloud run deploy "$INPUT_SERVICE" \
   --image "$INPUT_IMAGE" \
   --platform managed \
   --region "$INPUT_REGION" \
-  --allow-unauthenticated \
   ${ENV_FLAG}
 
 gcloud run services update-traffic "$INPUT_SERVICE" --to-latest \
